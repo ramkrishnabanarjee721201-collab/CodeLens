@@ -1,7 +1,7 @@
-[project]
+[codelens]
 name = "backend"
 version = "0.1.0"
-description = "Add your description here"
+description = "AI powered code reviewer platform"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
