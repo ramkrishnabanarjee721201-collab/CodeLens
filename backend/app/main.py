@@ -11,6 +11,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "https://code-lens-six.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -31,4 +32,3 @@ def health_check() -> dict[str, str]:
 @app.post("/review", response_model=ReviewResponse)
 def review(request: ReviewRequest) -> ReviewResponse:
     return review_code(request)
-
