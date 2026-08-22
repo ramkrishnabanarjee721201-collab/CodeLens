@@ -14,7 +14,10 @@ type ReviewResponse = {
   comments: ReviewComment[];
 };
 
-const API_URL = "http://127.0.0.1:8000/review";
+const API_BASE_URL = (
+  import.meta.env.VITE_API_URL ?? "https://codelens-eenl.onrender.com"
+).replace(/\/$/, "");
+const API_URL = `${API_BASE_URL}/review`;
 
 const languages = [
   { label: "Python", value: "python", sample: "print('Hello world')" },
