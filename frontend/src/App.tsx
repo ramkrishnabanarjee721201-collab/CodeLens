@@ -110,35 +110,40 @@ function App() {
 
   return (
     <main className="app-shell">
+      <div className="ambient ambient-one" />
+      <div className="ambient ambient-two" />
       <section className="workspace">
         <header className="topbar">
-          <div>
-            <p className="eyebrow">CodeLens</p>
-            <h1>AI Code Reviewer</h1>
+          <div className="brand-block">
+            <div className="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M8.5 7 4 12l4.5 5M15.5 7 20 12l-4.5 5M13.5 4 10.5 20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </div>
+            <div>
+              <p className="eyebrow">CodeLens</p>
+              <h1>Review with confidence.</h1>
+              <p className="subheading">A sharper second set of eyes for every pull request.</p>
+            </div>
           </div>
 
           <div className="controls">
-            <label htmlFor="language">Language</label>
-            <select
-              id="language"
-              value={language}
-              onChange={(event) => handleLanguageChange(event.target.value)}
-            >
-              {languages.map((item) => (
-                <option key={item.value} value={item.value}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
             <button className="primary-action" type="button" onClick={handleReview} disabled={isLoading}>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m13 3-1.1 6.4L6 11l5.9 1.6L13 19l1.1-6.4L20 11l-5.9-1.6L13 3Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" /></svg>
               <span>{isLoading ? "Reviewing" : "Review Code"}</span>
             </button>
           </div>
         </header>
 
         <div className="editor-panel">
+          <div className="editor-toolbar">
+            <label className="editor-language" htmlFor="language">
+              <span>Language</span>
+              <select id="language" value={language} onChange={(event) => handleLanguageChange(event.target.value)}>
+                {languages.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
+              </select>
+            </label>
+          </div>
           <Editor
-            height="100%"
+            height="calc(100% - 47px)"
             language={selectedLanguage.value}
             theme="vs-dark"
             value={code}
@@ -161,7 +166,7 @@ function App() {
             <h2>Findings</h2>
           </div>
           <span className={`result-count ${review?.comments.length === 0 ? "clean" : ""}`}>
-            {review ? `${review.comments.length} comments` : "Ready"}
+            <span className="count-indicator" />{review ? `${review.comments.length} comments` : "Ready to scan"}
           </span>
         </div>
 

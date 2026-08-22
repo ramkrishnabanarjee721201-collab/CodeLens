@@ -13,7 +13,7 @@ load_dotenv()
 REVIEW_SYSTEM_PROMPT = """
 You are CodeLens, an AI code reviewer.
 
-Review the submitted code for:
+Review the submitted code for: 
 - correctness bugs
 - security risks
 - bad error handling
